@@ -1,0 +1,67 @@
+
+.item img{
+	width:100%;
+}
+
+.slider{
+ margin-top:2px;
+ width:100%;
+ margin-left:0px;
+ 
+}
+
+.footer {
+height: 50px;
+width: 1200px;
+float:left;
+}
+
+.col-md-3 ul {
+	padding-top: 15px;
+
+}
+.col-md-3 ul li {
+	margin-top:5px;
+}
+.col-md-3 ul li a {
+	padding: 0 5px;
+}
+.col-md-3 p {
+	color:blue;
+	padding-top: 25px;
+}
+.col-md-3 p a{
+	color:#fff;
+}
+.col-md-3 p a:hover{
+	text-decoration:underline;
+}
+
+.col-md-4 h4 {
+	color:purple;
+}
+.col-md-4 h3{
+	color: white;
+}
+
+.well h1{
+color: Brown;
+	
+}
+
+.well h2{
+	color:purple;
+}
+.well h3{
+	color:blue;
+}
+
+.col-md-3 h4{
+	color:blue;
+}
+.col-md-3 h5{
+	color:purple;
+}
+.col-md-3 h3{
+color:blue;
+}
