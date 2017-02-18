@@ -28,4 +28,6 @@ http://soykot.tk/vsms
 user : employee@employee.com
 pass : employee 
 
+deafult username for the script on your localhost : abc@abc.com
+						pass : 123
 If you want more customized option don't hesitate to contact me here or on : dranger2011@gmail.com
