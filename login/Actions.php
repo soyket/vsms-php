@@ -2,8 +2,8 @@
 
 try
 {
-	$con = mysql_connect("localhost","kisuke_vsms","12301230");
-	mysql_select_db("kisuke_vsms", $con);
+	$con = mysql_connect("localhost","root","");
+	mysql_select_db("vsms", $con);
 
 	//Getting records (listAction)
 	if($_GET["action"] == "list")

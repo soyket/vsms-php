@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2016 at 06:54 PM
--- Server version: 10.1.8-MariaDB
--- PHP Version: 5.5.30
+-- Generation Time: Mar 01, 2017 at 09:00 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,8 +37,8 @@ CREATE TABLE `customer` (
   `w_start` date NOT NULL,
   `w_end` date NOT NULL,
   `payment_type` varchar(100) NOT NULL,
-  `invoice_id` varchar(100) NOT NULL,
-  `c_address` varchar(400) NOT NULL,
+  `invoice_id` varchar(100) DEFAULT NULL,
+  `c_address` varchar(400) DEFAULT NULL,
   `c_pass` varchar(30) NOT NULL,
   `extra` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -48,7 +48,8 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`c_id`, `v_id`, `cf_name`, `cl_name`, `c_email`, `c_mobile`, `nid`, `w_start`, `w_end`, `payment_type`, `invoice_id`, `c_address`, `c_pass`, `extra`) VALUES
-(9, 78, 'Kisuke Urahara', 'Urahara', 'kisuke01@mail.ru', '01912878182', '9934993920023', '2016-05-02', '2015-11-30', 'Visa/Master Card', '#IE9S78S', '125/A, BD', '1234', 'AC, HEAD LIGHT');
+(1, 2, 'asd', 'asd', 'ad', 'asd', 'asd', '2017-01-05', '2017-01-24', '', NULL, NULL, '', NULL),
+(2, 1, 'asd', 'asd', 'ad', 'asd', 'asd', '2017-01-05', '2017-01-24', '', NULL, NULL, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -67,11 +68,10 @@ CREATE TABLE `manufacturer` (
 --
 
 INSERT INTO `manufacturer` (`manufacturer_id`, `manufacturer_name`, `manufacturer_logo`) VALUES
-(5, 'Mitsubshi', NULL),
-(29, 'Audi', NULL),
 (30, 'BMW', NULL),
-(31, 'FERRARI', NULL),
-(32, 'LambourGini', NULL);
+(32, 'LambourGini', NULL),
+(33, 'Newww', NULL),
+(35, 'oasdad', NULL);
 
 -- --------------------------------------------------------
 
@@ -90,19 +90,9 @@ CREATE TABLE `model` (
 --
 
 INSERT INTO `model` (`model_id`, `model_name`, `manufacturer_name`) VALUES
-(22, 'A1', 'Audi'),
-(23, 'A4', 'Audi'),
-(24, 'A6', 'Audi'),
-(25, 'TT', 'Audi'),
-(26, 'R8', 'Audi'),
-(27, 'ASX', 'Mitsubshi'),
-(28, 'Colt', 'Mitsubshi'),
-(29, 'Lancer', 'Mitsubshi'),
-(30, 'Mirage', 'Mitsubshi'),
-(31, 'Daytona', 'FERRARI'),
-(32, '250 GTO', 'FERRARI'),
-(33, '275', 'FERRARI'),
-(34, '599 GTB Fiorano', 'FERRARI');
+(27, 'JXER', 'BMW'),
+(28, 'FF23', 'LambourGini'),
+(29, 'Laxus', 'BMW');
 
 -- --------------------------------------------------------
 
@@ -122,8 +112,8 @@ CREATE TABLE `users` (
   `u_mobile` varchar(100) NOT NULL,
   `u_gender` varchar(30) NOT NULL,
   `u_address` varchar(100) NOT NULL,
-  `s_question` varchar(100) NOT NULL,
-  `s_ans` varchar(100) NOT NULL
+  `s_question` varchar(100) DEFAULT NULL,
+  `s_ans` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -131,9 +121,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`u_id`, `u_email`, `f_name`, `l_name`, `u_bday`, `u_position`, `u_type`, `u_pass`, `u_mobile`, `u_gender`, `u_address`, `s_question`, `s_ans`) VALUES
-(1, 'abc@abc.com', 'Soykottt', 'Chowww', '2016-04-14', 'Manager', 'Admin', '81dc9bdb52d04dc20036dbd8313ed055', '01912817231', 'Male', '129,North Jatrabari', 'What is your name???', 'sssjjjj'),
-(4, 'ab@ab.com', 'asdasd', 'klasdkl', '2015-12-31', 'kasdkl', 'Employee', '202cb962ac59075b964b07152d234b70', 'klasdkl', 'Male', 'kasdklakld', 'klasldlk', 'kaskd'),
-(6, 'abb@ab.com', 'klsdkl', 'klasdkl', '2016-12-31', 'mkasfmk', 'Employee', '202cb962ac59075b964b07152d234b70', '02304304', 'Male', 'sdklfkl', 'kzdkfk', 'ksdkfk');
+(1, 'abc@abc.com', 'Soyket', 'Chowdhury', '2016-04-14', 'Manager', 'Admin', '202cb962ac59075b964b07152d234b70', '3133388055', 'Male', '129,North Jatrabarias', 'What is your name???', 'sssjjjj'),
+(9, 'abcd@abc.com', 'ffff', 'asdasd', '2015-11-30', 'iwskwk', 'Employee', '202cb962ac59075b964b07152d234b70', '00202', 'Male', 'kkasd', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -158,7 +147,7 @@ CREATE TABLE `vehicle` (
   `doors` int(11) NOT NULL,
   `seats` int(11) NOT NULL,
   `tank` float NOT NULL,
-  `image` varchar(400) NOT NULL,
+  `image` varchar(400) DEFAULT NULL,
   `e_no` varchar(40) NOT NULL,
   `c_no` varchar(40) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
@@ -170,11 +159,9 @@ CREATE TABLE `vehicle` (
 --
 
 INSERT INTO `vehicle` (`v_id`, `manufacturer_name`, `model_name`, `category`, `b_price`, `s_price`, `mileage`, `add_date`, `sold_date`, `status`, `registration_year`, `insurance_id`, `gear`, `doors`, `seats`, `tank`, `image`, `e_no`, `c_no`, `u_id`, `v_color`) VALUES
-(74, 'Mitsubshi', 'ASX', 'Subcompact', 20000000, NULL, 10000, '2016-11-30', NULL, 'Available', 2001, 2147483647, 'Auto', 2, 4, 100, '14620399372015-Mitsubishi-Outlander-Sport-2-4-GT-0.jpg*1462039937mitsubishi-outlander-sport-2.4-2*1462039937small-suvs-mitsubishi-asx-2015-wide.jpg', '', '', NULL, NULL),
-(75, 'Audi', 'A1', 'Subcompact', 75000000, 399999, 1000, '2015-11-30', NULL, 'Available', 2016, 23999234, 'Auto', 2, 2, 200, '14620410292011-Audi-A1-00011.jpg*1462041029small-suvs-mitsubishi-asx-2015-wide.jpg', '', '', NULL, NULL),
-(76, 'FERRARI', '599 GTB Fiorano', 'Compact', 40000040, NULL, 900, '2015-11-30', NULL, 'Available', 2015, 2147483647, 'Auto', 4, 2, 50, '14620451942007-ferrari-599-gtb-fiorano_100532846_m.jpg*146204519424375268_300x225.jpg*1462045194ferarri.jpg', '#093400', '#AJJSD93', NULL, 'Black'),
-(77, 'Audi', 'A6', 'Subcompact', 75000000, 2000, 1000, '2015-11-30', NULL, 'Available', 2016, 2399923, 'Auto', 2, 2, 200, '14620410292011-Audi-A1-00011.jpg*1462041029small-suvs-mitsubishi-asx-2015-wide.jpg', '', '', NULL, NULL),
-(78, 'FERRARI', '599 GTB Fiorano', 'Compact', 40000040, 20000000000, 900, '2015-11-30', '2016-05-02', 'Sold', 2015, 2147483647, 'Auto', 4, 2, 50, '14620451942007-ferrari-599-gtb-fiorano_100532846_m.jpg*146204519424375268_300x225.jpg*1462045194ferarri.jpg', '', '', 1, NULL);
+(1, 'LambourGini', 'JXER', 'asdasd', 2000, 2000, 200, '2016-12-08', NULL, 'Available', 2001, 121212, 'Auto', 0, 0, 0, NULL, '', '', NULL, NULL),
+(2, 'LambourGini', 'JXER', 'asdasd', 2000, 2000, 200, '2016-12-08', NULL, 'Available', 2001, 121212, 'Auto', 10, 10, 10, NULL, '10', '10', NULL, NULL),
+(110, 'BMW', 'JXER', 'asdasd', 2000, 2000, 200, '2016-12-08', NULL, 'Available', 2001, 121212, 'Auto', 10, 10, 10, NULL, '10', '10', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -186,8 +173,8 @@ INSERT INTO `vehicle` (`v_id`, `manufacturer_name`, `model_name`, `category`, `b
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`c_id`),
   ADD UNIQUE KEY `v_id_2` (`v_id`),
-  ADD UNIQUE KEY `invoice_id` (`invoice_id`),
   ADD UNIQUE KEY `c_id` (`c_id`),
+  ADD UNIQUE KEY `invoice_id` (`invoice_id`),
   ADD KEY `v_id` (`v_id`),
   ADD KEY `c_id_2` (`c_id`);
 
@@ -232,27 +219,27 @@ ALTER TABLE `vehicle`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `manufacturer`
 --
 ALTER TABLE `manufacturer`
-  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `model`
 --
 ALTER TABLE `model`
-  MODIFY `model_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `model_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 --
 -- Constraints for dumped tables
 --
@@ -261,20 +248,20 @@ ALTER TABLE `vehicle`
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`v_id`) REFERENCES `vehicle` (`v_id`);
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`v_id`) REFERENCES `vehicle` (`v_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `model`
 --
 ALTER TABLE `model`
-  ADD CONSTRAINT `model_ibfk_1` FOREIGN KEY (`manufacturer_name`) REFERENCES `manufacturer` (`manufacturer_name`);
+  ADD CONSTRAINT `model_ibfk_1` FOREIGN KEY (`manufacturer_name`) REFERENCES `manufacturer` (`manufacturer_name`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `vehicle`
 --
 ALTER TABLE `vehicle`
-  ADD CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`manufacturer_name`) REFERENCES `model` (`manufacturer_name`),
-  ADD CONSTRAINT `vehicle_ibfk_2` FOREIGN KEY (`model_name`) REFERENCES `model` (`model_name`),
+  ADD CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`manufacturer_name`) REFERENCES `model` (`manufacturer_name`) ON DELETE CASCADE,
+  ADD CONSTRAINT `vehicle_ibfk_2` FOREIGN KEY (`model_name`) REFERENCES `model` (`model_name`) ON DELETE CASCADE,
   ADD CONSTRAINT `vehicle_ibfk_3` FOREIGN KEY (`u_id`) REFERENCES `users` (`u_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
