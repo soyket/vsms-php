@@ -2,6 +2,7 @@
 
 try
 {
+	error_reporting(E_ALL ^ E_DEPRECATED);
 	$con = mysql_connect("localhost","root","");
 	mysql_select_db("vsms", $con);
 
