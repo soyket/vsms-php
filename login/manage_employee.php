@@ -60,7 +60,7 @@ if(isset($_POST['update']))
 		
 		
 		<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-5 col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">Add New Employee</div>
 					<div class="panel-body">
@@ -104,7 +104,7 @@ if(isset($_POST['update']))
 									</select>
 							</div>
 							<div class="form-group">
-								Answear: <input class="form-control" placeholder="Answear" name="s_ans" type="text" required>
+								Answer: <input class="form-control" placeholder="Answear" name="s_ans" type="text" required>
 							</div>
 							<div class="form-group">
 								User Type: 
@@ -119,9 +119,9 @@ if(isset($_POST['update']))
 			</div>			
 			
 			
-			<div class="col-xs-6">
+			<div class="col-lg-7 col-xs-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">All Employee</div>
+					<div class="panel-heading">All Employee - You can't delete these deafult users :D </div>
 					<div class="panel-body">
 					<div id="userTableContainer" ></div>
 				    </div>
@@ -140,7 +140,7 @@ if(isset($_POST['update']))
 		
 		
 		
-			<script>
+			<script type="text/javascript">
 			function checkAvailability() {
 				$("#loaderIcon").show();
 				jQuery.ajax({

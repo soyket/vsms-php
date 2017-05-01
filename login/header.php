@@ -61,9 +61,9 @@ $vcount=mysql_result($vt,0);
                     <img src="img/lamborghini-logo-psd-462117.png" alt="" height="200" width="180" style="margin-left: 9%; margin-top: 3%; "></a>
 		<br></div>
 		
-		<ul class="nav menu">
+		<ul class="nav menu side-nav">
 		
-			<li class="active"><a href="index.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li><a href="index.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
 			<?php
    if($userRow['u_type']=="Admin") 
 	echo '<li><a href="manage_employee.php"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>Manage Employee</a></li><li role="presentation" class="divider"></li>';

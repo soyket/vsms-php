@@ -56,6 +56,7 @@
 							
 							<div class="text-muted">Total Employees</div>
 						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -67,7 +68,7 @@
 		<div class="row">
 			<div class="col-md-8">
 			
-				
+				by - Soykot Chowdhury, AIUB
 				
 			</div><!--/.col-->
 			

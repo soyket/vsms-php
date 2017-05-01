@@ -23,11 +23,12 @@ Template has been used for back-end and front end
 More customization coming in future
 Added Web.config file setting in-case you want to host this on Azure account :D 
 
-See the software working on azure live : 
+See the software working live : 
 http://soykot.tk/vsms
+user : admin@admin.com
+pass : admin
+
 user : employee@employee.com
 pass : employee 
 
-deafult username for the script on your localhost : abc@abc.com
-						pass : 1234
 If you want more customized option don't hesitate to contact me here or on : dranger2011@gmail.com

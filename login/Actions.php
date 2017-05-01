@@ -171,7 +171,7 @@ try
 	else if($_GET["action"] == "deleteu")
 	{
 		//Delete from database
-		$result = mysql_query("DELETE FROM users WHERE u_id = " . $_POST["u_id"] . ";");
+		$result = mysql_query("DELETE FROM users WHERE u_id = " . $_POST["u_id"] . " AND su !=1 ;");
 
 		//Return result to jTable
 		$jTableResult = array();

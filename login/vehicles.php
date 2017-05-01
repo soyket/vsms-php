@@ -230,10 +230,7 @@ if(isset($_POST['submit']))
 				
 				<!-- modal for selling the vehicle -->
 					
-		<div class="row">
-			<div class="col-lg-12">
-				<h5 class="page-header">Add|View|Sell Vehicles</h5>
-			</div>
+		<div class="row"><br>
 			<div class="col-lg-12">
 				<a data-toggle="modal" data-target="#insert" href="#" class="btn btn-primary">Add New Vehicle</a><br><br>
 			</div> <!-- add new vehicle  button -->
@@ -258,8 +255,8 @@ if(isset($_POST['submit']))
 			 <td>   Max Price:</td>
             <td><input type="text" id="max" name="max"></td>
 			</tr>
-       
-		</tbody></table>
+		</tbody>
+		</table>
 				
 		</div>
 		
@@ -308,14 +305,14 @@ if(isset($_POST['submit']))
                 <td><?php $date = new DateTime($vehicle['add_date']); echo $date->format('m/d/Y'); ?></td>
                 <td><?php if($vehicle['sold_date']=== NULL){ echo 'NULL'; }else{ $date = new DateTime($vehicle['sold_date']); echo $date->format('m/d/Y'); }?></td>
                 <td><?php echo $vehicle['status']; ?></td>
-                <td><img src="uploads/<?php $path=explode("*",$vehicle['image']); echo $path[0]; ?>" width="200" height="100"></td>
+                <td><img src="uploads/<?php $path=explode("*",$vehicle['image']); echo $path[0]; ?>" class="img-responsive"></td>
                 <td><?php echo $vehicle['b_price']; ?></td>
                 <td width=200px>
 	
-					<a href="sell.php?id=<?php echo $vehicle['v_id']; ?>" class="btn btn-success"<?php if($vehicle['status']!="Available") echo 'style="display:none"';  ?>>Sell</a>
-                    <a href="Actions.php?action=v_edit&id=<?php echo $vehicle['v_id']; ?>" class="btn btn-warning" style="display:none" >Edit</a>
-                    <a data-toggle="modal" data-target="#myModal" href="<?php if($vehicle['status']!="Available"){ echo 'Actions.php?action=vs_view&id=';} else{ echo 'Actions.php?action=v_view&id='; }?><?php echo $vehicle['v_id']; ?>" class="btn btn-info" >View</a>
-                    <a onclick="return confirm('All records will be deleted, continue?')" href="Actions.php?action=v_delete&id=<?php echo $vehicle['v_id']; ?>" class="btn btn-danger" <?php if($userRow['u_type']!="Admin"){echo 'style="display:none"';} ?>  >Delete</a>
+					<a href="sell.php?id=<?php echo $vehicle['v_id']; ?>" class="btn btn-success btn-xs"<?php if($vehicle['status']!="Available") echo 'style="display:none"';  ?>>Sell</a>
+                    <a href="Actions.php?action=v_edit&id=<?php echo $vehicle['v_id']; ?>" class="btn btn-warning btn-xs" style="display:none" >Edit</a>
+                    <a data-toggle="modal" data-target="#myModal" href="<?php if($vehicle['status']!="Available"){ echo 'Actions.php?action=vs_view&id=';} else{ echo 'Actions.php?action=v_view&id='; }?><?php echo $vehicle['v_id']; ?>" class="btn btn-info btn-xs" >View</a>
+                    <a onclick="return confirm('All records will be deleted, continue?')" href="Actions.php?action=v_delete&id=<?php echo $vehicle['v_id']; ?>" class="btn btn-danger btn-xs" <?php if($userRow['u_type']!="Admin"){echo 'style="display:none"';} ?>  >Delete</a>
 					
 				</td>
             </tr>
