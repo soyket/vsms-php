@@ -2,10 +2,10 @@
 <?php
 if(isset($_POST['update']))
 {	
-	$u_email = $userRow['u_email'];
+	$u_email = mysql_real_escape_string($userRow['u_email']);
 	$f_name = mysql_real_escape_string($_POST['f_name']);
 	$l_name = mysql_real_escape_string($_POST['l_name']);
-	$u_bday =  $_POST['u_bday'];
+	$u_bday =  mysql_real_escape_string($_POST['u_bday']);
 	$u_position = mysql_real_escape_string($_POST['u_position']);
 	$u_address = mysql_real_escape_string($_POST['u_address']);
 	$u_type = mysql_real_escape_string($_POST['u_type']);
