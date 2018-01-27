@@ -5,22 +5,22 @@ $query_parent = mysql_query("SELECT * FROM manufacturer") or die("Query failed: 
 <?php
 if(isset($_POST['submit']))
 {
-	$manufacturer_name =  $_POST['manufacturer_name'];
-	$model_name =  $_POST['model_name'];
-	$category =  $_POST['category'];
-	$b_price =  $_POST['b_price'];
-	$mileage =  $_POST['mileage'];
-	$add_date =  $_POST['add_date'];
+	$manufacturer_name =  mysql_real_escape_string($_POST['manufacturer_name']);
+	$model_name =  mysql_real_escape_string($_POST['model_name']);
+	$category =  mysql_real_escape_string($_POST['category']);
+	$b_price =  mysql_real_escape_string($_POST['b_price']);
+	$mileage =  mysql_real_escape_string($_POST['mileage']);
+	$add_date =  mysql_real_escape_string($_POST['add_date']);
 	$status =  "Available";
-	$registration_year =  $_POST['registration_year'];
-	$insurance_id =  $_POST['insurance_id'];
-	$gear =  $_POST['gear'];
-	$doors =  $_POST['doors'];
-	$seats =  $_POST['seats'];
-	$tank =  $_POST['tank'];
-	$e_no = $_POST['e_no'];
-	$c_no = $_POST['c_no'];
-	$v_color = $_POST['v_color'];
+	$registration_year =  mysql_real_escape_string($_POST['registration_year']);
+	$insurance_id =  mysql_real_escape_string($_POST['insurance_id']);
+	$gear =  mysql_real_escape_string($_POST['gear']);
+	$doors =  mysql_real_escape_string($_POST['doors']);
+	$seats =  mysql_real_escape_string($_POST['seats']);
+	$tank =  mysql_real_escape_string($_POST['tank']);
+	$e_no = mysql_real_escape_string($_POST['e_no']);
+	$c_no = mysql_real_escape_string($_POST['c_no']);
+	$v_color = mysql_real_escape_string($_POST['v_color']);
 	
 	if(isset($_FILES['support_images']['name']))
 	        {
@@ -32,18 +32,36 @@ if(isset($_POST['submit']))
 	                   {    
 	                       $path = "uploads/";
 	                       $name = $_FILES['support_images']['name'][$i];
-	                      $size = $_FILES['support_images']['size'][$i];
-	       
-	                       list($txt, $ext) = explode(".", $name);
-	                       $file= time().substr(str_replace(" ", "_", $txt), 0);
-	                       $info = pathinfo($file);
-	                       $filename = $file.".".$ext;
-	                       if(move_uploaded_file($_FILES['support_images']['tmp_name'][$i], $path.$filename)) 
-	                       { 
-	                          date_default_timezone_set ("Asia");
-	                          $currentdate=date("Y M d");
-	                          $file_name_all.=$filename."*";
-	                       }
+	                       $size = $_FILES['support_images']['size'][$i];
+	      
+			    	$allowed='jpg,gif';  //which file types are allowed seperated by comma
+
+			    	$extension_allowed=  explode(',', $allowed);
+			    	$file_extension=  pathinfo($name, PATHINFO_EXTENSION);
+			    	if(array_search($file_extension, $extension_allowed))
+			    	{
+						   
+					       list($txt, $ext) = explode(".", $name);
+					       $file= time().substr(str_replace(" ", "_", $txt), 0);
+					       $info = pathinfo($file);
+					       $filename = $file.".".$ext;
+					       if(move_uploaded_file($_FILES['support_images']['tmp_name'][$i], $path.$filename)) 
+					       { 
+						  date_default_timezone_set ("Asia");
+						  $currentdate=date("Y M d");
+						  $file_name_all.=$filename."*";
+					       }
+	
+			    	}
+			    	else
+			    	{
+					//echo "$extension_allowed is not allowed for uploading file";
+				//	$file_name_all='';
+					//return;
+			    	}
+				   
+				   
+			
 	                 }
 	            }
 	            $filepath = rtrim($file_name_all, '*'); //imagepath if it is present    
