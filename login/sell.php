@@ -4,20 +4,20 @@
 	$u_id = $_SESSION['user'];
 			if(isset($_POST['sold']))
 			{	
-				$v_id = $id;
-				$nid =  $_POST['nid'];
-				$cf_name =  $_POST['cf_name'];
-				$cl_name =  $_POST['cl_name'];
-				$c_email =  $_POST['c_email'];
-				$c_mobile =  $_POST['c_mobile'];
-				$w_start =  $_POST['w_start'];
-				$w_end =  $_POST['w_end'];
-				$payment_type =  $_POST['payment_type'];
-				$c_address =  $_POST['c_address'];
-				$c_pass =  $_POST['c_pass'];
-				$extra =  $_POST['extra'];
-				$s_price =  $_POST['s_price'];
-				$invoice_id= "#IE9S".$id. "S";
+				$v_id = mysql_real_escape_string($id);
+				$nid =  mysql_real_escape_string($_POST['nid']);
+				$cf_name =  mysql_real_escape_string($_POST['cf_name']);
+				$cl_name =  mysql_real_escape_string($_POST['cl_name']);
+				$c_email =  mysql_real_escape_string($_POST['c_email']);
+				$c_mobile =  mysql_real_escape_string($_POST['c_mobile']);
+				$w_start =  mysql_real_escape_string($_POST['w_start']);
+				$w_end =  mysql_real_escape_string($_POST['w_end']);
+				$payment_type =  mysql_real_escape_string($_POST['payment_type']);
+				$c_address =  mysql_real_escape_string($_POST['c_address']);
+				$c_pass =  mysql_real_escape_string($_POST['c_pass']);
+				$extra =  mysql_real_escape_string($_POST['extra']);
+				$s_price =  mysql_real_escape_string($_POST['s_price']);
+				$invoice_id= "#IE9S".mysql_real_escape_string($id). "S";
 				$qrr="INSERT INTO customer(v_id,nid,cf_name,cl_name,c_email,c_mobile,w_start,w_end,payment_type,c_address,c_pass,extra,invoice_id) VALUES('$v_id','$nid','$cf_name','$cl_name','$c_email','$c_mobile','$w_start','$w_end','$payment_type','$c_address','$c_pass','$extra','$invoice_id')";
 					echo $qrr;
 					if(mysql_query($qrr))
