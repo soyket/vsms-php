@@ -24,7 +24,7 @@ More customization coming in future
 Added Web.config file setting in-case you want to host this on Azure account :D 
 
 See the software working live : 
-http://soykot.tk/vsms
+http://voidthemes.com/scripts/vsms/
 user : admin@admin.com
 pass : admin
 
