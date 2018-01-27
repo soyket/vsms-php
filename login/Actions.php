@@ -3,8 +3,8 @@
 try
 {
 	error_reporting(E_ALL ^ E_DEPRECATED);
-	$con = mysql_connect("localhost","root","");
-	mysql_select_db("vsms", $con);
+	$con = mysql_connect("localhost","root","");   //change as per your localhost or server database settings
+	mysql_select_db("vsms", $con);   //change as per your localhost or server database settings
 
 	//Getting records (listAction)
 	if($_GET["action"] == "list")
@@ -26,7 +26,7 @@ try
 	else if($_GET["action"] == "create")
 	{
 		//Insert record into database
-		$result = mysql_query("INSERT INTO manufacturer(manufacturer_name) VALUES('" . $_POST["manufacturer_name"] . "');");
+		$result = mysql_query("INSERT INTO manufacturer(manufacturer_name) VALUES('" . mysql_real_escape_string($_POST["manufacturer_name"]) . "');");
 		
 		//Get last inserted record (to return to jTable)
 		$result = mysql_query("SELECT * FROM manufacturer WHERE manufacturer_id = LAST_INSERT_ID();");
@@ -44,7 +44,7 @@ try
 	else if($_GET["action"] == "update")
 	{
 		//Update record in database
-		$result = mysql_query("UPDATE manufacturer SET manufacturer_name = '" . $_POST["manufacturer_name"] . "' WHERE manufacturer_id = " . $_POST["manufacturer_id"] . ";");
+		$result = mysql_query("UPDATE manufacturer SET manufacturer_name = '" . mysql_real_escape_string($_POST["manufacturer_name"]) . "' WHERE manufacturer_id = " . $_POST["manufacturer_id"] . ";");
 
 		//Return result to jTable
 		$jTableResult = array();
@@ -102,7 +102,7 @@ try
 	else if($_GET["action"] == "createm")
 	{
 		//Insert record into database
-		$result = mysql_query("INSERT INTO model(model_name, manufacturer_name) VALUES('" . $_POST["model_name"] . "', '" . $_POST["manufacturer_name"] . "');");
+		$result = mysql_query("INSERT INTO model(model_name, manufacturer_name) VALUES('" . mysql_real_escape_string($_POST["model_name"]) . "', '" . mysql_real_escape_string($_POST["manufacturer_name"]) . "');");
 		
 		//Get last inserted record (to return to jTable)
 		$result = mysql_query("SELECT * FROM model WHERE model_id = LAST_INSERT_ID();");
@@ -118,7 +118,7 @@ try
 	else if($_GET["action"] == "updatem")
 	{
 		//Update record in database
-		$result = mysql_query("UPDATE model SET model_name = '" . $_POST["model_name"] . "', manufacturer_name = '" . $_POST["manufacturer_name"] . "' WHERE model_id = " . $_POST["model_id"] . ";");
+		$result = mysql_query("UPDATE model SET model_name = '" . mysql_real_escape_string($_POST["model_name"]) . "', manufacturer_name = '" . mysql_real_escape_string($_POST["manufacturer_name"]) . "' WHERE model_id = " . $_POST["model_id"] . ";");
 
 		//Return result to jTable
 		$jTableResult = array();
@@ -142,7 +142,8 @@ try
 	else if($_GET["action"] == "checkuser")
 	{
 				if(!empty($_POST["username"])) {
-				  $result = mysql_query("SELECT count(*) FROM users WHERE u_email='" . $_POST["username"] . "'");
+					$uname= mysql_real_escape_string($_POST["username"]);
+				  $result = mysql_query("SELECT count(*) FROM users WHERE u_email='" . $uname . "'");
 				  $row = mysql_fetch_row($result);
 				  $user_count = $row[0];
 				  if($user_count>0) {
@@ -156,7 +157,7 @@ try
 	
 	else if($_GET["action"] == "listu")
 	{
-		$result = mysql_query("SELECT * FROM users;");
+		$result = mysql_query("SELECT u_id,u_email,f_name,l_name,u_mobile,u_type FROM users;");
 		$rows = array();
 		while($row = mysql_fetch_array($result))
 		{
