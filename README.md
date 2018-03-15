@@ -1,3 +1,6 @@
+Disclaimer: this was a school project done a long time ago so its not maintained and might contain variability. I suggest not to use this for any production site or use it on your own risk. I don't or won't bear any burden if something goes wrong. Use at your own risk. You can use this to learn basics of php only. 
+
+
 # Vehicle Sales Management System - RAW PHP
 
 Vehicle Sales Management System Built on PHP
