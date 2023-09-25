@@ -1,4 +1,4 @@
-Disclaimer: this was a school project done a long time ago so its not maintained and might contain variability. I suggest not to use this for any production site or use it on your own risk. I don't or won't bear any burden if something goes wrong. Use at your own risk. You can use this to learn basics of php only. 
+Disclaimer: this was a school project done a long time ago so it's not maintained and might contain vulnerability. I suggest not to use this for any production site or use it on your own risk. I don't or won't bear any burden if something goes wrong. Use at your own risk. You can use this to learn the basics of php only. 
 
 
 # Vehicle Sales Management System - RAW PHP
@@ -23,11 +23,10 @@ New Employee Adding for doing Sales , Adding new vehicles
 	Do change the database config to run on your server / localhost
 
 Template has been used for back-end and front end 
-More customization coming in future
+
 Added Web.config file setting in-case you want to host this on Azure account :D 
 
-See the software working live : 
-http://voidthemes.com/scripts/vsms/
+
 user : admin@admin.com
 pass : admin
 
