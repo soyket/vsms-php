@@ -32,5 +32,3 @@ pass : admin
 
 user : employee@employee.com
 pass : employee 
-
-If you want more customized option don't hesitate to contact me here or on : dranger2011@gmail.com
